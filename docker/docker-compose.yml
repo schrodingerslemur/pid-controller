@@ -1,0 +1,7 @@
+version: '3.4'
+services:
+  telemetry:
+    build: .
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+    tty: true
