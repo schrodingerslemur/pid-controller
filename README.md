@@ -1,8 +1,6 @@
 # Adaptive Motor Control | Sensor-Fusion PID on STM32
 
-**September 2025 – November 2025**
-
-A portfolio-quality embedded project that implements a closed-loop motor control system on an STM32 MCU using sensor fusion between a quadrature encoder and an IMU (gyro/accel). The system runs a self-tuning PID controller that adapts gains when large disturbances are detected. Telemetry and tuning are exposed over UART and a small Python dashboard for realtime plotting and logging.
+Embedded closed-loop motor control system on an STM32 MCU using sensor fusion between a quadrature encoder and an IMU (gyro/accel). The system runs self-tuning PID controller that adapts gains when large disturbances are detected. Telemetry and tuning are exposed over UART and a small Python dashboard for realtime plotting and logging.
 
 ## Features
 - STM32 (HAL) project structure (CMSIS/HAL-compatible).
@@ -13,7 +11,7 @@ A portfolio-quality embedded project that implements a closed-loop motor control
 - Makefile for arm-none-eabi-gcc toolchain and `flash.sh` script template for OpenOCD/ST-Link.
 - Container-friendly: included `docker/` files show how to wrap the Python dashboard.
 
-## What you get in this repo
+##  Layout
 - `src/` : embedded C sources (main + modules)
 - `inc/` : headers
 - `firmware/` : Makefile, linker script template
@@ -51,10 +49,3 @@ python3 telemetry/telemetry.py --port /dev/ttyUSB0 --baud 115200
 
 ## Tuning notes
 Start with conservative PID gains (small P, zero I/D). Increase P until oscillation, add I to eliminate steady-state error, then D to damp. Adaptive routine will increase gains slightly under heavy load conditions detected by discrepancy between encoder velocity and IMU-derived velocity.
-
----
-
-If you'd like, I can:
-- Produce a CubeMX `.ioc` skeleton (STM32CubeMX project).
-- Convert Makefile to PlatformIO configuration.
-- Add simulated testbench code that runs on host (unit tests).
